@@ -17,11 +17,17 @@ namespace Chris531_WebApp1.Controllers
                 var url = Request.Url.ToString();
                 if (url.StartsWith("http://"))
                 {
-                    ViewBag.Title = url.Substring(7, url.IndexOf('.')) + " (add PageTitle to appsettings)";
+                    if(url.IndexOf('.') > -1)
+                        ViewBag.Title = url.Substring(7, url.IndexOf('.')) + " (add PageTitle to appsettings)";
+                    else
+                        ViewBag.Title = url.Substring(7) + " (add PageTitle to appsettings)";
                 }
                 else
                 {
-                    ViewBag.Title = url.Substring(0, url.IndexOf('.')) + " (add PageTitle to appsettings)";
+                    if (url.IndexOf('.') > -1)
+                        ViewBag.Title = url.Substring(0, url.IndexOf('.')) + " (add PageTitle to appsettings)";
+                    else
+                        ViewBag.Title = url + " (add PageTitle to appsettings)";
                 }
             }
             else
